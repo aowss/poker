@@ -34,7 +34,7 @@ public class Game {
 
         dealer = new Dealer();
         playerNames.stream().forEach(name -> players.add(new Player(name)));
-        deck = new Deck();
+        deck = Deck.getShuffledDeck();
 
     }
 

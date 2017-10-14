@@ -13,7 +13,7 @@ public class DeckTest {
 
     @Test
     public void newDeck() {
-        Stack<Card> deck = new Deck().getCards();
+        Stack<Card> deck = Deck.getShuffledDeck().getCards();
         assertThat(deck.size(), is(52));
         Set<Card> unique = new HashSet<>();
         deck.stream().forEach(card -> assertThat(unique.add(card), is(true)));

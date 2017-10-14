@@ -13,7 +13,7 @@ public class Deck {
     public static final Card[] fullDeck = new Card[DECK_SIZE];
 
     //  <code>Deque</code> might be more appropriate
-    private Stack<Card> cards = new Stack<>();
+    private Stack<Card> cards;
 
     static {
         int index = 0;
@@ -24,9 +24,22 @@ public class Deck {
         }
     }
 
+    public static final Deck getShuffledDeck() {
+        return new Deck();
+    }
+
     public Deck() {
-        uniqueRandomIntegers.apply(0,DECK_SIZE).apply(DECK_SIZE).forEach(index -> cards.push(fullDeck[index]));
+        cards = shuffle(fullDeck);
         System.out.println("deck at start : " + cards);
+    }
+
+    private Stack<Card> shuffle(Card[] deck) {
+        Stack<Card> cards = new Stack<>();
+        uniqueRandomIntegers.
+                apply(0, deck.length).
+                apply(deck.length).
+                forEach(index -> cards.push(deck[index]));
+        return cards;
     }
 
     public Stack<Card> getCards() {
